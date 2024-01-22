@@ -1,15 +1,19 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet,Dimensions } from "react-native";
 import colors from "../constants/colors";
 
+// const deviceHeight = Dimensions.get('screen').height
+
 export default StyleSheet.create({
+    screen:{
+         flex:1
+    },
     rootContainer:{
      flex:1,
-     marginTop:100,
+    //  marginTop:deviceHeight>400?90:40,
      alignItems:'center'
     },
     card:{
         padding:16,
-        marginVertical:36,
         marginHorizontal:24,
         backgroundColor:colors.primaryDarkest,
         borderRadius:10,

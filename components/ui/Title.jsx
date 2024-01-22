@@ -1,5 +1,5 @@
-import {View,Text} from 'react-native'
-import styles from '../styles/title.style'
+import {View,Text,Platform} from 'react-native'
+import styles from '../styles/title'
 
 
 function Title({children}){

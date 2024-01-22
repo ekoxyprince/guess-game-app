@@ -1,11 +1,12 @@
 import { useState } from "react"
-import { View,TextInput,Alert,Text } from "react-native"
+import { View,TextInput,Alert,useWindowDimensions,KeyboardAvoidingView,ScrollView } from "react-native"
 import PrimaryButton from "../components/ui/PrimaryButton"
 import startscreenstyles from "../styles/startscreenstyles"
 import Title from "../components/ui/Title"
 import Card from "../components/ui/Card"
 import InstructionText from "../components/ui/InstructionText"
 function StartGameScreen(props){
+const {width,height} = useWindowDimensions()
   const [input,setInput] = useState('')
   function handleInput(text){
    setInput(text)
@@ -23,7 +24,9 @@ function StartGameScreen(props){
     })
   }
   return (
-    <View style={startscreenstyles.rootContainer}>
+     <ScrollView style={startscreenstyles.screen}>
+    <KeyboardAvoidingView style={startscreenstyles.screen} behavior="position">
+    <View style={[startscreenstyles.rootContainer,{marginTop:height>400?90:40}]}>
       <Title>Guess My Number</Title>
     <Card>
       <InstructionText>Enter a number</InstructionText>
@@ -40,6 +43,8 @@ function StartGameScreen(props){
        </View>
     </Card>
     </View>
+    </KeyboardAvoidingView>
+    </ScrollView>
   )
 }
 

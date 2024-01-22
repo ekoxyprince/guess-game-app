@@ -6,7 +6,8 @@ export default StyleSheet.create({
     screen:{
     flex:1,
     padding:12,
-    marginTop:25
+    marginTop:25,
+    alignItems:'center'
     },
     title:{
         fontSize:18,
@@ -40,5 +41,10 @@ export default StyleSheet.create({
     },
     roundListContainer:{
         flex:1,
-    }
+    },
+    buttonContainerWide:{
+        flexDirection:'row',
+        justifyContent:'space-between',
+        alignItems:'center'
+        }
 })

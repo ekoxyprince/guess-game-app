@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet,Platform } from "react-native";
 import colors from "../../constants/colors";
 
 export default StyleSheet.create({
@@ -10,6 +10,7 @@ export default StyleSheet.create({
         borderColor:'white',
         color:'white',
         padding:18,
-        marginBottom:20
+        marginBottom:20,
+        maxWidth:'80%'
     }
 })

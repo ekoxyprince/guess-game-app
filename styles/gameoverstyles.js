@@ -1,5 +1,7 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet,Dimensions } from "react-native";
 import colors from "../constants/colors";
+
+const deviceWidth = Dimensions.get('window').width;
 
 export default StyleSheet.create({
     rootContainer:{
@@ -10,16 +12,26 @@ export default StyleSheet.create({
         justifyContent:'center'
     },
     titleContainer:{
-        width:"100%"
+        width:"100%",
+        alignItems:'center'
     },
     imageContainer:{
       overflow:'hidden',
-      width:380,
-      height:380,
-      borderRadius:190,
+      width:deviceWidth-90,
+      height:deviceWidth-90,
+      borderRadius:(deviceWidth-90)/2,
       borderWidth:3,
       borderColor:colors.primaryDarkest,
       marginBottom:20
+    },
+    imageContainerWide:{
+     overflow:'hidden',
+     width:150,
+     height:150,
+     borderRadius:75,
+     borderWidth:3,
+     borderColor:colors.primaryDarkest,
+     marginBottom:20
     },
     image:{
        width:'100%',

@@ -17,6 +17,7 @@ export default StyleSheet.create({
         shadowColor:'black',
         borderRadius:40,
         borderWidth:1,
-        borderColor:colors.accentLight
+        borderColor:colors.accentLight,
+        minWidth:'100%'
     }
 })

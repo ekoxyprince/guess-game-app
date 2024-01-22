@@ -33,6 +33,8 @@ export default function App() {
     setUserNumber(null)
   }
   return (
+    <>
+    <StatusBar style='light'/>
     <LinearGradient
     colors={[colors.primaryDarkerPlus,colors.accentLight]}
     style={styles.rootScreen}>
@@ -44,6 +46,7 @@ export default function App() {
     </SafeAreaView>
       </ImageBackground>
     </LinearGradient>
+    </>
   );
 }
 

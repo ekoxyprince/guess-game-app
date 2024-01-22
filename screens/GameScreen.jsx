@@ -1,4 +1,4 @@
-import { View,Text,Alert,FlatList } from "react-native"
+import { View,Text,Alert,FlatList,useWindowDimensions } from "react-native"
 import { useState,useEffect } from "react"
 import styles from "../styles/gamescreen"
 import Title from "../components/ui/Title"
@@ -18,6 +18,7 @@ function GameScreen(props){
             return rnd_num
         }
     }
+    const {width,height} = useWindowDimensions()
     let minBoundary = 1
     let maxBoundary = 99
 function handlenextGuess(direction){
@@ -44,12 +45,9 @@ function handlenextGuess(direction){
             setGuessRounds(prev=>[newRandomNum,...prev])
         }
     },[props.userNumber,guess])
-       
-    return(
+    let content = (
         <>
-        <View style={styles.screen}>
-            <Title>Opponent's Guess</Title>
-            <NumberContainer>{guess}</NumberContainer>
+         <NumberContainer>{guess}</NumberContainer>
             <Card>
                 <InstructionText style={styles.instructionText}>Higher or Lower?</InstructionText>
                 <View style={styles.buttonsContainer}>
@@ -65,6 +63,29 @@ function handlenextGuess(direction){
                     <Text style={styles.roundText}>Last Random Number Guessed: ({guessRounds[0]}) </Text>
                 </View>
             </Card>
+        </>
+    )
+    if(height<500){
+        content = (
+            <>
+            <View style={styles.buttonContainerWide}>
+            <View style={styles.buttonContainer}>
+                    <PrimaryButton onPress={handlenextGuess.bind(this,'higher')}><Ionicons name="md-add" size={20} color={'white'}/></PrimaryButton>
+                    </View>
+            <NumberContainer>{guess}</NumberContainer>
+            <View style={styles.buttonContainer}>
+                    <PrimaryButton onPress={handlenextGuess.bind(this,'lower')}><Ionicons size={20} color={'white'} name="md-remove"/></PrimaryButton>
+                    </View>
+            </View>
+            </>
+        )
+    }
+       
+    return(
+        <>
+        <View style={styles.screen}>
+            <Title>Opponent's Guess</Title>
+           {content}
             <View style={styles.roundListContainer}>
               <FlatList data={guessRounds} renderItem={(guessRound)=>{
                 return   <GuessLogItem roundNum={(guessRounds.length)-guessRound.index} guess={guessRound.item}/>
